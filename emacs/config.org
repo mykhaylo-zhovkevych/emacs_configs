@@ -107,11 +107,7 @@
   (use-package emacs
     :ensure nil
     :config
-    (setq ring-bell-function #'ignore
-          inhibit-startup-screen t
-          inhibit-splash-screen t
-          inhibit-startup-message t
-          initial-buffer-choice t))
+    (setq ring-bell-function #'ignore))
 
   (set-face-attribute 'default nil
   :font "JetBrains Mono"
@@ -142,13 +138,3 @@
 (setq-default line-spacing 0.12)
 
 #+end_src
-
-
-** Disable Toolsbars and Scrollbars
-#+begin_src emacs-lisp
-(menu-bar-mode)
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
-#+end_src
-
-** 

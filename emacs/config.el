@@ -96,11 +96,7 @@
   (use-package emacs
     :ensure nil
     :config
-    (setq ring-bell-function #'ignore
-          inhibit-startup-screen t
-          inhibit-splash-screen t
-          inhibit-startup-message t
-          initial-buffer-choice t))
+    (setq ring-bell-function #'ignore))
 
   (set-face-attribute 'default nil
   :font "JetBrains Mono"
@@ -129,7 +125,3 @@
 
 ;; Uncomment the following line if line spacing needs adjusting.
 (setq-default line-spacing 0.12)
-
-(menu-bar-mode)
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
