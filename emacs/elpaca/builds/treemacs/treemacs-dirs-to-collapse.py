@@ -1,0 +1,1 @@
+/home/mykhaylo/.config/emacs/elpaca/sources/treemacs/src/scripts/treemacs-dirs-to-collapse.py

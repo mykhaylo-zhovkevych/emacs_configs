@@ -1,0 +1,1 @@
+/home/mykhaylo/.config/emacs/elpaca/sources/themes/themes/doom-old-hope-theme.el

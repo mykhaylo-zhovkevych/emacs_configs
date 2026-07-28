@@ -1,0 +1,1 @@
+/home/mykhaylo/.config/emacs/elpaca/sources/themes/themes/doom-henna-theme.el

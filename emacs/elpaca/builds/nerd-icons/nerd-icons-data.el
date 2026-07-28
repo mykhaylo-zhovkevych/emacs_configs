@@ -1,0 +1,1 @@
+/home/mykhaylo/.config/emacs/elpaca/sources/nerd-icons/nerd-icons-data.el

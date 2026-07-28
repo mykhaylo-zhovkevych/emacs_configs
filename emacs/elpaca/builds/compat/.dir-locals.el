@@ -1,0 +1,1 @@
+/home/mykhaylo/.config/emacs/elpaca/sources/compat/.dir-locals.el

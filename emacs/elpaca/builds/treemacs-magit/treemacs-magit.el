@@ -1,0 +1,1 @@
+/home/mykhaylo/.config/emacs/elpaca/sources/treemacs/src/extra/treemacs-magit.el

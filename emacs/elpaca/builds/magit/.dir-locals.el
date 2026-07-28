@@ -1,0 +1,1 @@
+/home/mykhaylo/.config/emacs/elpaca/sources/magit/.dir-locals.el

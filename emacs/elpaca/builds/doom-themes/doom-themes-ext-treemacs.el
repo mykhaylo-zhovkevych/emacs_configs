@@ -1,0 +1,1 @@
+/home/mykhaylo/.config/emacs/elpaca/sources/themes/extensions/doom-themes-ext-treemacs.el

@@ -1,4 +1,15 @@
-(defvar elpaca-installer-version 0.12)
+#+TITLE:DT's GNU Emacs Config
+#+AUTHOR: Mykhaylo Zhovkevych (MZ)
+#+DESCRIPTION: MZ's personal Emacs config.
+#+STARTUP: overview
+#+OPTIONS: toc:2
+
+* IMPORTANT PROGRAMS TO LOAD FIRST
+** ElpacaPackage Manager
+
+# Emacs Lisp
+#+begin_src emacs-lisp
+  (defvar elpaca-installer-version 0.12)
   (defvar elpaca-directory (expand-file-name "elpaca/" user-emacs-directory))
   (defvar elpaca-builds-directory (expand-file-name "builds/" elpaca-directory))
   (defvar elpaca-sources-directory (expand-file-name "sources/" elpaca-directory))
@@ -275,6 +286,19 @@
   ;; Corrects (and improves) org-mode's native fontification.
   (doom-themes-org-config))
 
+(use-package nerd-icons
+  :straight (nerd-icons
+             :type git
+             :host github
+             :repo "rainstormstudio/nerd-icons.el"
+             :files (:defaults "data"))
+  :custom
+  ;; The Nerd Font you want to use in GUI
+  ;; "Symbols Nerd Font Mono" is the default and is recommended
+  ;; but you can use any other Nerd Font if you want
+  (nerd-icons-font-family "Symbols Nerd Font Mono")
+  )
+
 (use-package solaire-mode
     :ensure t
     :config
@@ -284,3 +308,6 @@
   :ensure t
   :config
   (golden-ratio-mode 1))
+
+
+#+end_src

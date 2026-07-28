@@ -1,0 +1,1 @@
+/home/mykhaylo/.config/emacs/elpaca/sources/persp-mode/persp-mode.el

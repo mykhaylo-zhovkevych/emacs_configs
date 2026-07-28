@@ -1,0 +1,1 @@
+/home/mykhaylo/.config/emacs/elpaca/sources/golden-ratio/golden-ratio.el

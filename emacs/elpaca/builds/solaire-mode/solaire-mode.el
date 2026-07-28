@@ -1,0 +1,1 @@
+/home/mykhaylo/.config/emacs/elpaca/sources/emacs-solaire-mode/solaire-mode.el
