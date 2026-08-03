@@ -5,11 +5,7 @@
       inhibit-startup-screen t
       inhibit-splash-screen t
       inhibit-startup-message t
-      initial-scratch-message nil
-
-      ;; Display startup.txt instead of *scratch* after startup.
-      initial-buffer-choice
-      (expand-file-name "startup.txt" user-emacs-directory))
+      initial-scratch-message nil)
 
 ;; Set frame parameters before the first graphical frame is drawn.  Keep the
 ;; menu bar visible while preventing the tool and scroll bars from flashing.

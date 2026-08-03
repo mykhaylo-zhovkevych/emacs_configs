@@ -126,6 +126,13 @@
 ;; Uncomment the following line if line spacing needs adjusting.
 (setq-default line-spacing 0.12)
 
+;; doom-themes-treemacs-config and treemacs's own icon theme both hard-require
+;; nerd-icons; without an explicit package declaration it's never actually
+;; loaded, which throws mid dired-mode-hook and leaves Dired buffers
+;; permanently uninitialized (see treemacs--follow crash notes below).
+(use-package nerd-icons
+  :ensure t)
+
 (use-package treemacs
   :ensure t
   :defer t
@@ -196,6 +203,18 @@
     ;;(treemacs-resize-icons 44)
 
     (treemacs-follow-mode t)
+    ;; treemacs-follow-mode's idle timer calls `dired-current-directory' on
+    ;; any buffer whose major-mode is dired-mode; if that buffer's
+    ;; `dired-subdir-alist' hasn't been populated yet (e.g. a Dired buffer on
+    ;; "~" still mid-readin), dired signals "No subdir-alist in %s" instead
+    ;; of returning a directory. Fall back to `default-directory' instead of
+    ;; erroring.
+    (with-eval-after-load 'dired
+      (advice-add 'dired-current-directory :around
+                  (lambda (orig-fn &rest args)
+                    (if dired-subdir-alist
+                        (apply orig-fn args)
+                      default-directory))))
     (treemacs-filewatch-mode t)
     (treemacs-fringe-indicator-mode 'always)
     (when treemacs-python-executable
@@ -279,6 +298,59 @@
     :ensure t
     :config
     (solaire-global-mode +1))
+
+(use-package doom-modeline
+  :ensure t
+  :init (doom-modeline-mode 1))
+
+ (use-package spacious-padding
+    :ensure (:wait t)
+    :config
+    (setq spacious-padding-widths
+          '(:internal-border-width 15
+            :header-line-width 4
+            :mode-line-width 6
+            :tab-width 4
+            :right-divider-width 10
+            :scroll-bar-width 8))
+    (spacious-padding-mode 1))
+
+(use-package tab-bar
+  :ensure nil
+  :config
+  (tab-bar-mode 1)
+  (tab-bar-history-mode 1)
+  (setq tab-bar-show 1
+        tab-bar-close-button-show t
+        tab-bar-new-button-show t))
+
+(use-package dashboard
+  :elpaca t
+  :config
+  (setq dashboard-banner-logo-title "Welcome to Emacs"
+        dashboard-startup-banner 'official
+        dashboard-center-content t
+        dashboard-vertically-center-content t
+        dashboard-display-icons-p t
+        dashboard-icon-type 'nerd-icons
+        dashboard-set-heading-icons t
+        dashboard-set-file-icons t
+        dashboard-items '((recents   . 8)
+                          (bookmarks . 5)
+                          (projects  . 5)
+                          (agenda    . 5)))
+
+  (add-hook 'elpaca-after-init-hook
+            #'dashboard-insert-startupify-lists)
+  (add-hook 'elpaca-after-init-hook
+            #'dashboard-initialize)
+
+  (dashboard-setup-startup-hook)
+
+  ;; Show Dashboard in new frames created by emacsclient.
+  (when (daemonp)
+    (setq initial-buffer-choice #'dashboard-open)
+    (add-hook 'server-after-make-frame-hook #'dashboard-open)))
 
 (use-package golden-ratio
   :ensure t
